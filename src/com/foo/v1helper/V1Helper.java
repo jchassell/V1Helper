@@ -30,12 +30,20 @@ public class V1Helper
 	public Asset singleAsset(String assetId) throws Exception 
 	{
 		Oid memberId = Oid.fromToken(assetId, _metaModel);
+		System.out.println("memberId = "+ memberId.toString());
 		Query query = new Query(memberId);
 		QueryResult result = _services.retrieve(query);
+		Asset[] assets = result.getAssets();
+		if(assets.length == 0)
+		{
+			System.out.println("result: total available = "+result.getTotalAvaliable());
+			throw new Exception("No Assets Found: result set empty");
+		}
 		Asset member = result.getAssets()[0];
-		System.out.println(member.getOid().getToken());
+		System.out.println("singleAsset() returning "+member.getOid().getToken());
 		return member;
 	}
+	
 	/**
 	 * @param args
 	 */
@@ -52,7 +60,7 @@ public class V1Helper
 			_metaModel = new MetaModel(metaConnector);
 			_services = new Services(_metaModel, dataConnector);
 			
-			Asset asset = viHelper.singleAsset("Story:1005");
+			Asset asset = viHelper.singleAsset("Story:1007");
 			
 		}
 		catch (Exception e)

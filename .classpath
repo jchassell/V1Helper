@@ -2,6 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/home/jeff/VersionOne.SDK.Java.APIClient/V1APIClient.jar"/>
+	<classpathentry kind="lib" path="V1APIClient.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
